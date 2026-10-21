@@ -48,18 +48,18 @@ Press Enter at each question. `init` will:
 ## 4. Make a private change
 
 ```sh
-ghostbranch feature start hello
+ghostbranch feature start feat/try-ghostbranch
 echo "And hello from a private branch." >> hello.txt
 git commit -am "Say hello privately"
-git push shadow hello
+git push shadow feat/try-ghostbranch
 ```
 
-The branch is in the private shadow repo only. Look at your public copy on GitHub: it has no `hello` branch.
+The branch is in the private shadow repo only. Look at your public copy on GitHub: it has no `feat/try-ghostbranch` branch.
 
 ## 5. Gate it
 
 ```sh
-ghostbranch gate hello
+ghostbranch gate feat/try-ghostbranch
 ```
 
 The gate rebases the change on public `main`, scans it for leaks, and runs the CI on a draft pull request in the shadow repo. It takes about a minute here.
@@ -67,7 +67,7 @@ The gate rebases the change on public `main`, scans it for leaks, and runs the C
 ## 6. Publish it (optional)
 
 ```sh
-ghostbranch promote hello
+ghostbranch promote feat/try-ghostbranch
 ```
 
 It shows what it would publish, then asks you to type a one-time code it shows at your terminal, so only a person can publish. It then opens a normal pull request on your public copy. Press Enter when it asks what to do with the shadow branch. Merge the pull request on GitHub, then run `ghostbranch sync`.
