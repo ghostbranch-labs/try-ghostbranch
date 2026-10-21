@@ -1,0 +1,14 @@
+name: ci
+
+# Runs on pull requests only. The gate opens a draft pull request in the
+# shadow repo, so this is the CI it waits for. It doesn't run on push, so
+# `ghostbranch sync` starts nothing in the shadow repo.
+on: pull_request
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: hello.txt is not empty
+        run: test -s hello.txt && cat hello.txt
