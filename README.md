@@ -8,7 +8,13 @@ This repo has one file, `hello.txt`, and a CI check that it isn't empty. The che
 
 ## 1. Make your copy
 
-Click **Use this template** → **Create a new repository**. Keep it **public**, and name it anything, for example `try-ghostbranch`.
+Click **Use this template** → **Create a new repository**, at the top of this page. GitHub makes a full copy of this repo in your own account, so there's nothing to download. Keep it **public**, and name it `try-ghostbranch` (any name works; the steps below use that one).
+
+With the [GitHub CLI](https://cli.github.com), one command makes the copy and clones it, so you can skip the `git clone` in step 3:
+
+```sh
+gh repo create try-ghostbranch --template ghostbranch-labs/try-ghostbranch --public --clone
+```
 
 ## 2. Install Ghostbranch
 
@@ -22,6 +28,8 @@ npm install -g ghostbranch                        # anywhere with Node
 ```
 
 ## 3. Set it up
+
+Clone your copy (replace `<you>` with your GitHub username), then run `init` in it:
 
 ```sh
 git clone https://github.com/<you>/try-ghostbranch
